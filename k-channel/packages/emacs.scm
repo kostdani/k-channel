@@ -18,7 +18,7 @@
 	     ))
        (file-name (git-file-name name version))
        (sha256
-        (base32 "1vf5zm82sx3m1yvq73km8ajapv6rnz41b1jrsif7kh0ijh9vk3qi"))))
+        (base32 "1r2hxmbkdf6pxvj6piwdiz4f9amlkrk64846klvy4ri3xgxnp33y"))))
     (build-system emacs-build-system)
     (propagated-inputs
      (list emacs-dash emacs-editorconfig emacs-s))
