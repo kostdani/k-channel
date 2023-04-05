@@ -1,0 +1,6 @@
+;; -*- mode: scheme; -*-
+
+(channel
+ (version 0)
+ (url "https://github.com/kostdani/k-channel")
+)
