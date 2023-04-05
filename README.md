@@ -1,0 +1,2 @@
+# k-channel
+guix channel
