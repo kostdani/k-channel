@@ -9,13 +9,13 @@
 (define-public emacs-copilot
   (package
     (name "emacs-copilot")
-    (version "1.0")
+    (version "0.9.7")
     (source
      (origin
        (method git-fetch)
        (uri (git-reference
              (url "https://github.com/zerolfx/copilot.el")
-             (commit "b8ffab08d2eeaae3edff270800c59b3db53047d4")
+             (commit "f1e76834990bc94c2f157f7147648b15c2f12ecd")
 	     ))
        (file-name (git-file-name name version))
        (sha256
