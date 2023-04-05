@@ -15,7 +15,7 @@
                     (commit version)))
               (sha256
                (base32
-                "103pl77dhafi2ayds5yma2smv3b58zcysnd6vl5m5zavjvk35sz7"))
+                "0nf66gswwz33cz58awyqwsaqpnnj371m2cw09ajv5f87b95mr2g1"))
               (file-name (git-file-name name version))))
     (build-system gnu-build-system)
     (synopsis "Material Shell gnome extension")
