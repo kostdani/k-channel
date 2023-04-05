@@ -22,7 +22,7 @@
         (base32 "0mi64a6pnblfqx278isbx487xhijs1q1cgjpswsvmi7qza2v8viq"))))
     (build-system emacs-build-system)
     (propagated-inputs
-     (list emacs-dash emacs-editorconfig emacs-s node))
+     (list emacs-dash emacs-editorconfig emacs-s node-lts))
     (home-page "https://github.com/zerolfx/copilot.el")
     (synopsis "copilot.el")
     (description
