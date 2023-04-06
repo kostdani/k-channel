@@ -1,7 +1,7 @@
 (define-module (k-channel packages gnome)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
-  #:use-module (guix packages python)
+  #:use-module (gnu packages python)
   #:use-module (guix git-download)
   #:use-module (guix build-system gnu))
 
