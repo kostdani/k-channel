@@ -19,8 +19,9 @@
                 "0nf66gswwz33cz58awyqwsaqpnnj371m2cw09ajv5f87b95mr2g1"))
               (file-name (git-file-name name version))))
     (build-system gnu-build-system)
+    (inputs (list python))
     (native-inputs
-     `(("glib:bin" ,glib "bin") ,python)) 
+     `(("glib:bin" ,glib "bin"))) 
     (arguments
      `(#:phases
        (modify-phases %standard-phases
