@@ -27,8 +27,8 @@
            (lambda _
              (mkdir "/share/gnome-shell")
              (rename-file "~/.local/share/gnome-shell/extensions" 
-                          "/share/gnome-shell/extensions)
-             ))))
+                          "/share/gnome-shell/extensions")
+             )))))
     (synopsis "Material Shell gnome extension")
     (description "A modern desktop interface for Linux extending GNOME Shell.
                  Providing a unique, simple, productivity-oriented, 
@@ -37,3 +37,4 @@
                  a great user experience.")
     (home-page "https://github.com/material-shell/material-shell")
     (license license:gpl3+)))
+
