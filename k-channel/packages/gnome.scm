@@ -1,6 +1,7 @@
 (define-module (k-channel packages gnome)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
+  #:use-module (guix packages python)
   #:use-module (guix git-download)
   #:use-module (guix build-system gnu))
 
@@ -18,6 +19,8 @@
                 "0nf66gswwz33cz58awyqwsaqpnnj371m2cw09ajv5f87b95mr2g1"))
               (file-name (git-file-name name version))))
     (build-system gnu-build-system)
+    (native-inputs
+     `(("glib:bin" ,glib "bin") ,python)) 
     (arguments
      `(#:phases
        (modify-phases %standard-phases
