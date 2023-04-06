@@ -18,6 +18,17 @@
                 "0nf66gswwz33cz58awyqwsaqpnnj371m2cw09ajv5f87b95mr2g1"))
               (file-name (git-file-name name version))))
     (build-system gnu-build-system)
+    (arguments
+     `(#:phases
+       (modify-phases %standard-phases
+         (delete 'bootstrap)
+         (delete 'configure)
+         (add-after 'install 'move-files
+           (lambda _
+             (mkdir "/share/gnome-shell")
+             (rename-file "~/.local/share/gnome-shell/extensions" 
+                          "/share/gnome-shell/extensions)
+             ))))
     (synopsis "Material Shell gnome extension")
     (description "A modern desktop interface for Linux extending GNOME Shell.
                  Providing a unique, simple, productivity-oriented, 
