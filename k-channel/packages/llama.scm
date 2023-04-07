@@ -6,7 +6,7 @@
 
 (define-public llama-cpp
   (package
-    (name "llama.cpp")
+    (name "llama-cpp")
     (version "master-cc9cee8")
     (source (origin
               (method git-fetch)
@@ -15,7 +15,7 @@
                     (commit version)))
               (sha256
                (base32
-                "0nf66gswwz33cz58awyqwsaqpnnj371m2cw09ajv5f87b95mr2g1"))
+                "17gz15fb26qy5wzd49mmiywan0ch50f7bmh2w13cap9c1rxy9744"))
               (file-name (git-file-name name version))))
     (build-system gnu-build-system)
     (synopsis "LLaMa.cpp")
