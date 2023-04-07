@@ -21,4 +21,4 @@
     (synopsis "LLaMa.cpp")
     (description "Inference of LLaMA model in pure C/C++")
     (home-page "https://github.com/ggerganov/llama.cpp")
-    (license license:mit)))
+    (license license:expat)))
