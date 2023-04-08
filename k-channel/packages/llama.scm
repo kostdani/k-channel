@@ -1,24 +1,39 @@
-(define-module (k-channel packages llama)
+(define-module (k-channel packages alpaca)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
   #:use-module (guix git-download)
+  #:use-module (guix gexp)
   #:use-module (guix build-system gnu))
 
-(define-public llama-cpp
+(define-public alpaca-cpp
   (package
-    (name "llama-cpp")
-    (version "master-cc9cee8")
+    (name "alpaca-cpp")
+    (version "81bd894")
     (source (origin
               (method git-fetch)
               (uri (git-reference
-                    (url "https://github.com/ggerganov/llama.cpp")
+                    (url "https://github.com/antimatter15/alpaca.cpp")
                     (commit version)))
               (sha256
                (base32
-                "17gz15fb26qy5wzd49mmiywan0ch50f7bmh2w13cap9c1rxy9744"))
+                "0fai4wb6q2jn0fmjam98wm63rvfmyd1s8s669rqgilv8mgmqndwb"))
               (file-name (git-file-name name version))))
     (build-system gnu-build-system)
-    (synopsis "LLaMa.cpp")
-    (description "Inference of LLaMA model in pure C/C++")
-    (home-page "https://github.com/ggerganov/llama.cpp")
+    (arguments
+     (list
+      #:make-flags #~(list "CC=gcc")
+      #:phases
+      #~(modify-phases %standard-phases
+		      (delete 'bootstrap)
+		      (delete 'configure)
+		      (delete 'check)
+		      (delete 'install)
+		      
+		      (add-after 'build 'move-files
+				 (lambda _
+				   (rename-file "chat" "alpaca-chat")
+				   (install-file "alpaca-chat" (string-append (assoc-ref %outputs "out") "/bin")))))))
+    (synopsis "Alpaca.cpp")
+    (description "Run a fast ChatGPT-like model locally on your device")
+    (home-page "https://github.com/antimatter15/alpaca.cpp")
     (license license:expat)))
