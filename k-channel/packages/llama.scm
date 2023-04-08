@@ -1,4 +1,4 @@
-(define-module (k-channel packages alpaca)
+(define-module (k-channel packages llama)
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
   #:use-module (guix git-download)
