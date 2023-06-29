@@ -10,21 +10,21 @@
 (define-public raknet
   (package
    (name "raknet")
-   (version "1a16989")
+   (version "4.3.4")
    (source
     (origin
      (method git-fetch)
      (uri (git-reference
-	   (url "https://github.com/facebookarchive/RakNet")
+	   (url "https://github.com/miniclip/RakNet")
 	   (commit version)))
      (file-name (git-file-name name version))
      (sha256
       (base32
-       "0qmzdqj2ccc9vkn67i2f6s6sznhz213pk8vkp50mvg23wxw8xrzp"))))
+       "0ji642xiyy248rs3r7c5flkwxihan8ji7hvl134xz1wpsnqwhmsr"))))
    (build-system cmake-build-system)
    (synopsis "RakNet is a cross platform, open source, C++ networking engine for game programmers.")
    (description "RakNet is a cross platform, open source, C++ networking engine for game programmers.")
-   (home-page "https://github.com/facebookarchive/RakNet")
+   (home-page "https://github.com/miniclip/RakNet")
    (license license:bsd-3)))
 
 
