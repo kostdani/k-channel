@@ -39,7 +39,7 @@
     (inherit openmw)
     (name "tes3mp")
     (version "0.8.1")
-    (inputs (list raknet))
+    (inputs (list raknet recastnavigation))
     (source
      (origin  
       (method git-fetch)
