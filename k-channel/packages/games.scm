@@ -4,18 +4,43 @@
   #:use-module (guix git-download)
   #:use-module (gnu packages game-development))
 
-(define-public tes3mp 
-               (package 
-                (inherit openmw)
-                (name "tes3mp")
-                (version "0.8.1")
-                (source
-                 (origin  
-                 (method git-fetch)
-                 (uri (git-reference
-                        (url "https://github.com/TES3MP/TES3MP")
-                        (commit version)))
-                 (file-name (git-file-name name version))
-                 (sha256
-                    (base32
-                       "09gd1zia27fa5phz0xx375y89rdsvf9pgfmw4n38pp108gh6002c"))))))
+
+
+(define-public raknet
+  (package
+   (name "raknet")
+   (version "1a16989")
+   (source
+    (origin
+     (method git-fetch)
+     (uri (git-reference
+	   (url "https://github.com/facebookarchive/RakNet")
+	   (commit version)))
+     (file-name (git-file-name name version))
+     (sha256
+      (base32
+       "09gd1zia27fa5phz0xx375y89rdsvf9pgfmw4n38pp108gh6002c"))))
+   (build-system cmake-build-system)
+   (synopsis "RakNet is a cross platform, open source, C++ networking engine for game programmers.")
+   (description "RakNet is a cross platform, open source, C++ networking engine for game programmers.")
+   (home-page "https://github.com/facebookarchive/RakNet")
+   (license license:bsd-3)))
+
+
+ (define-public tes3mp 
+   (package 
+    (inherit openmw)
+    (name "tes3mp")
+    (version "0.8.1")
+    (inputs (list raknet))
+    (source
+     (origin  
+      (method git-fetch)
+      (uri (git-reference
+            (url "https://github.com/TES3MP/TES3MP")
+            (commit version)))
+      (file-name (git-file-name name version))
+      (sha256
+       (base32
+        "09gd1zia27fa5phz0xx375y89rdsvf9pgfmw4n38pp108gh6002c"))))))
+
