@@ -19,7 +19,7 @@
      (file-name (git-file-name name version))
      (sha256
       (base32
-       "09gd1zia27fa5phz0xx375y89rdsvf9pgfmw4n38pp108gh6002c"))))
+       "1h8ima4s1srrfaznyg8q5qry9z92sg5qsrvy4xv357xpdjayh97h"))))
    (build-system cmake-build-system)
    (synopsis "RakNet is a cross platform, open source, C++ networking engine for game programmers.")
    (description "RakNet is a cross platform, open source, C++ networking engine for game programmers.")
