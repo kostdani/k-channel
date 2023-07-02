@@ -27,7 +27,11 @@
     (list
      #:phases
      #~(modify-phases %standard-phases
-		      (delete 'check))))
+		      (delete 'check)
+		      (add-after 'build 'move-files
+				 (lambda _
+				   ;;(rename-file "chat" "alpaca-chat")
+				   (install-file "Lib/DLL/libRakNetDLL.so" (string-append (assoc-ref %outputs "out") "/lib")))))))
    (synopsis "RakNet is a cross platform, open source, C++ networking engine for game programmers.")
    (description "RakNet is a cross platform, open source, C++ networking engine for game programmers.")
    (home-page "https://github.com/miniclip/RakNet")
