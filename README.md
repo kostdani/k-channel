@@ -1,2 +1,2 @@
 # k-channel
-guix channel
+guix channel with packages i use
