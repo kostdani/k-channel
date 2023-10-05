@@ -1,12 +1,14 @@
-(use-modules (guix packages)
-             (guix download)
-	           (guix git-download)
-             (guix build-system gnu)
-	           (guix build-system copy)
-	           (gnu packages gtk)
-	           (gnu packages gcc)
-             (guix licenses))
+(define-module (k-channel packages linux-run)
+  #:use-module (guix packages)
+  #:use-module (guix download)
+  #:use-module (guix git-download)
+  #:use-module (guix build-system gnu)
+  #:use-module (guix build-system copy)
+  #:use-module (gnu packages gtk)
+  #:use-module (gnu packages gcc)
+  #:use-module ((guix licenses) #:prefix license:))
 
+(define-public linux-run
   (package
     (name "linux-run")
     (version "1.0.0")
@@ -30,4 +32,4 @@
     (synopsis "Wrapper to run Linux binaries that are not from Guix")
     (description "This package provides a shell wrapper that will redefine
 the environment to use Guix libraries for running a Linux binary.")
-    (license bsd-2))
+    (license license:bsd-2)))
