@@ -27,7 +27,10 @@
      `(#:phases
        (modify-phases %standard-phases
          (delete 'bootstrap)
-         (delete 'configure)
+         (delete 'configure)            
+      	(add-before 'build 'add-dist-folder
+		     (lambda _
+		       (invoke "mkdir dist")))
          (add-after 'install 'move-files
            (lambda _
              (mkdir "/share/gnome-shell")
