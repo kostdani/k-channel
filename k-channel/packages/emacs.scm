@@ -3,6 +3,8 @@
   #:use-module (guix packages)
   #:use-module (guix git-download)
   #:use-module (guix build-system emacs)
+  #:use-module (guix utils)
+  #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
   #:use-module (gnu packages node))
 
@@ -30,3 +32,14 @@
     (description
      "Copilot.el is an Emacs plugin for GitHub Copilot.")
     (license license:gpl3+)))
+
+(define-public emacs-exwm-xwidgets
+     (package
+	 (inherit emacs-exwm)
+	 (name "emacs-exwm-xwidgets")
+	 (synopsis "Emacs X window manager (with Xwidgets)")
+	 (propagated-inputs
+	  (list emacs-xwidgets))
+	 (arguments
+	  (substitute-keyword-arguments (package-arguments emacs-exwm)
+					((#:emacs emacs) `,emacs-xwidgets)))))
