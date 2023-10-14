@@ -35,6 +35,8 @@
     (license license:gpl3+)))
 
 
-(define-public emacs-exwm-xwidgets
-     ((package-input-rewriting `((,emacs . ,emacs-xwidgets)))
-      emacs-exwm))
+  (define-public emacs-exwm-xwidgets
+    (package
+     (inherit ((package-input-rewriting `((,emacs . ,emacs-xwidgets))) emacs-exwm))
+     (name "emacs-exwm-xwidgets")
+     (synopsis "Emacs X window manager (with Xwidgets)")))
