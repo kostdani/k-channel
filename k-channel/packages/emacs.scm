@@ -12,17 +12,17 @@
 (define-public emacs-copilot
   (package
     (name "emacs-copilot")
-    (version "0.10.0")
+    (version "0.10.1")
     (source
      (origin
        (method git-fetch)
        (uri (git-reference
              (url "https://github.com/zerolfx/copilot.el")
-             (commit "3086d214f40a9689d00d647667b73795abc07bc9")
+             (commit "653fe7b12990b5b7a050971bed4579022ce4b4f8")
 	     ))
        (file-name (git-file-name name version))
        (sha256
-        (base32 "09ay9h9pailaaj6z57v7nla2k8nn660d92wa7hgbaw8v4mq7mx0n"))))
+        (base32 "1cy3541l33ri4qai61f3l4179q43np9flh5ank5l5a35a1c19gad"))))
     (build-system emacs-build-system)
     (arguments
        `(#:include (cons "^dist\\/" %default-include)))
