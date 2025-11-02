@@ -1,4 +1,4 @@
-(define-module (k-channel llvm)
+(define-module (k-channel packages llvm)
   #:use-module (guix)
   #:use-module (guix build-system gnu)
   #:use-module (guix build-system cmake)
