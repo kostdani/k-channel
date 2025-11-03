@@ -59,9 +59,9 @@
     (sha256 (base32 (assoc-ref %llvm-monorepo-hashes version)))
     (patches (map search-patch (assoc-ref %llvm-patches version)))))
 
-(define-public mlir-21
+(define-public llvm-mlir-clang-21
   (package
-    (name "mlir")
+    (name "llvm-mlir-clang")
     (version (package-version llvm-21))
     (source (llvm-monorepo version))
     (build-system cmake-build-system)
@@ -70,7 +70,10 @@
     (arguments
      (list #:build-type "Release"
            #:configure-flags
-           #~(list "-DMLIR_BUILD_MLIR_C_DYLIB=ON"
+           #~(list "-DLLVM_ENABLE_PROJECTS=mlir"
+                "-DLLVM_TARGETS_TO_BUILD=X86"
+                "-DLLVM_BUILD_EXAMPLES=ON"
+                "-DMLIR_BUILD_MLIR_C_DYLIB=ON"
                    "-DLLVM_BUILD_LLVM_DYLIB=ON"
                    "-DLLVM_LINK_LLVM_DYLIB=ON")
            #:tests? #f                  ; Tests require gtest
