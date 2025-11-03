@@ -1,7 +1,6 @@
 (define-module (k-channel packages llvm)
   #:use-module (guix)
   #:use-module ((guix licenses) #:prefix license:)
-  #:use-module (guix build-system gnu)
   #:use-module (guix build-system cmake)
   #:use-module (guix git-download)
   #:use-module (guix licenses)
