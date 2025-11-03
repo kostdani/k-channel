@@ -70,14 +70,7 @@
     (arguments
      (list #:build-type "Release"
            #:configure-flags
-           #~(list (string-append "-DLLVM_TABLEGEN="
-                                    #+(file-append this-package
-                                                   "/bin/llvm-tblgen")
-                                  
-                     (string-append "-DLLVM_NATIVE_TOOL_DIR="
-                                    #+(file-append this-package "/bin"))
-                     (string-append "-DLLVM_HOST_TRIPLE="
-                                    #$(%current-target-system)
+           #~(list 
                                   "-DLLVM_ENABLE_PROJECTS=mlir"
                 "-DLLVM_TARGETS_TO_BUILD=X86"
                 "-DLLVM_BUILD_EXAMPLES=ON"
