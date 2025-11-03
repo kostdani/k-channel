@@ -74,6 +74,7 @@
                 "-DLLVM_TARGETS_TO_BUILD=X86"
                 "-DLLVM_BUILD_EXAMPLES=ON"
                 "-DMLIR_BUILD_MLIR_C_DYLIB=ON"
+                   "-DLLVM_INSTALL_UTILS=ON"
                    "-DLLVM_BUILD_LLVM_DYLIB=ON"
                    "-DLLVM_LINK_LLVM_DYLIB=ON")
            #:tests? #f                  ; Tests require gtest
