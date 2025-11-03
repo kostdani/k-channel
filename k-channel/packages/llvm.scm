@@ -59,35 +59,36 @@
     (sha256 (base32 (assoc-ref %llvm-monorepo-hashes version)))
     (patches (map search-patch (assoc-ref %llvm-patches version)))))
 
-(define-public llvm-mlir-clang-21
+(define* (mlir-from-llvm llvm)
   (package
-    (name "llvm-mlir-clang")
-    (version (package-version llvm-21))
-    (source (llvm-monorepo version))
+    (name "mlir")
+    (version (package-version llvm))
+    (source (llvm-monorepo (package-version llvm)))
     (build-system cmake-build-system)
-    (inputs
-     (list llvm-21))
+    (native-inputs (package-native-inputs llvm))
+    (inputs (list llvm))
     (arguments
-     (list #:build-type "Release"
-           #:configure-flags
-           #~(list 
-                                  "-DLLVM_ENABLE_PROJECTS=mlir"
-                "-DLLVM_TARGETS_TO_BUILD=X86"
-                "-DLLVM_BUILD_EXAMPLES=ON"
-                "-DMLIR_BUILD_MLIR_C_DYLIB=ON"
-                   "-DLLVM_INSTALL_UTILS=ON"
-                   "-DLLVM_BUILD_LLVM_DYLIB=ON"
-                   "-DLLVM_LINK_LLVM_DYLIB=ON")
-           #:tests? #f                  ; Tests require gtest
-           #:phases #~(modify-phases %standard-phases
+     `(#:build-type "Release"
+       #:configure-flags '("-DLLVM_ENABLE_PROJECTS=mlir"
+                           "-DLLVM_TARGETS_TO_BUILD=X86"
+                           "-DLLVM_BUILD_EXAMPLES=ON"
+                           "-DLLVM_BUILD_UTILS=ON"
+                           "-DLLVM_INSTALL_TOOLCHAIN_ONLY=OFF")
+       #:tests? #f ;Tests require gtest
+                    #:phases #~(modify-phases %standard-phases
                         (add-after 'unpack 'change-directory
                           (lambda _
-                            (chdir "mlir"))))))
+                            (chdir "mlir"))))
+       #:modules ((srfi srfi-1)
+                  (ice-9 match)
+                  ,@%cmake-build-system-modules)))
     (home-page "https://mlir.llvm.org/")
-    (synopsis "Multi-Level Intermediate Representation")
-    (description "This package is a novel approach to building reusable
-and extensible compiler infrastructure.  MLIR aims to address software
-fragmentation, improve compilation for heterogeneous hardware, significantly
-reduce the cost of building domain specific compilers, and aid in connecting
-existing compilers together.")
-    (license license:asl2.0))) ; With LLVM exception
+    (synopsis "Multi-Level Intermediate Representation library")
+    (description "Novel approach to building reusable and extensible compiler
+infrastructure. MLIR aims to address software fragmentation, improve compilation
+for heterogeneous hardware, significantly reduce the cost of building domain
+specific compilers, and aid in connecting existing compilers together.")
+    (license (package-license llvm))))
+
+(define-public mlir-21
+  (mlir-from-llvm llvm-21)) 
