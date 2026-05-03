@@ -59,32 +59,3 @@
     (sha256 (base32 (assoc-ref %llvm-monorepo-hashes version)))
     (patches (map search-patch (assoc-ref %llvm-patches version)))))
 
-(define-public mlir-21
-  (package
-    (name "mlir")
-    (version (package-version llvm-21))
-    (source (llvm-monorepo version))
-    (build-system cmake-build-system)
-    (inputs
-     (list llvm-21))
-    (arguments
-     (list #:build-type "Release"
-           #:configure-flags
-           #~(list "-DLLVM_ENABLE_PROJECTS=mlir"
-                           "-DLLVM_TARGETS_TO_BUILD=X86"
-                           "-DLLVM_BUILD_EXAMPLES=ON"
-                           "-DLLVM_BUILD_UTILS=ON"
-                           "-DLLVM_INSTALL_TOOLCHAIN_ONLY=OFF")
-           #:tests? #f                  ; Tests require gtest
-           #:phases #~(modify-phases %standard-phases
-                        (add-after 'unpack 'change-directory
-                          (lambda _
-                            (chdir "mlir"))))))
-    (home-page "https://mlir.llvm.org/")
-    (synopsis "Multi-Level Intermediate Representation")
-    (description "This package is a novel approach to building reusable
-and extensible compiler infrastructure.  MLIR aims to address software
-fragmentation, improve compilation for heterogeneous hardware, significantly
-reduce the cost of building domain specific compilers, and aid in connecting
-existing compilers together.")
-    (license license:asl2.0)))
