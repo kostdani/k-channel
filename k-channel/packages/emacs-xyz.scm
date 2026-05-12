@@ -5,6 +5,7 @@
   #:use-module (guix build-system emacs)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages emacs-xyz)
+  #:use-module (gnu packages emacs-build)
   #:use-module (gnu packages node)
   #:use-module (guix gexp))
 
