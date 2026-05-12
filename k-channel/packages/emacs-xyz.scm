@@ -21,7 +21,7 @@
              (commit version)))
        (sha256
         (base32
-         "1glqr4x7r2f0wgcn0mbcvphdidirpnq1b771ig5ly4s3zaxnqxl5"))
+         "1xvhfwgddms0cxhi9pn75vb6qsd6gqfv8s59xjk9ilh57nvwzqfn"))
        (file-name (git-file-name name version))))
     (build-system emacs-build-system)
     (propagated-inputs
