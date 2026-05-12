@@ -19,7 +19,7 @@
              (commit version)))
        (sha256
         (base32
-         "PLACEHOLDER-SHA256"))
+         "1glqr4x7r2f0wgcn0mbcvphdidirpnq1b771ig5ly4s3zaxnqxl5"))
        (file-name (git-file-name name version))))
     (build-system emacs-build-system)
     (propagated-inputs
